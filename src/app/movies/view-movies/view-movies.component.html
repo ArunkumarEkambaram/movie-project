@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-9">
+
+    <h2>Movie Details</h2>
+    {{movies$ | json}}
+    <hr>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Movie Name</th>
+          <th>Genre</th>
+          <th>Release Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of movies$">
+          <td>{{m.movieName}}</td>
+          <td>{{m.rating}}</td>
+          <td>{{m.releaseDate | date:"mediumDate"}}</td>
+          <td> <a [routerLink]="['/movies/get-movie/',m.id]">Details</a> </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
