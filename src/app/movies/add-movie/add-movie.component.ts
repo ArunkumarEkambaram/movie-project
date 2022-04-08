@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-add-movie',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddMovieComponent implements OnInit {
 
-  constructor() { }
+  constructor(public movieService: MovieService) { }
 
   ngOnInit(): void {
+  }
+
+
+  onSubmit(movieForm: NgForm) {
+    this.movieService.createMovie().subscribe({
+      next: (data) => { },
+      complete: () => { alert("Created"); },
+      error: (err) => { console.log("Unable to create movie" + err); }
+    })
   }
 
 }

@@ -11,6 +11,7 @@ import { DeleteMovieComponent } from './delete-movie/delete-movie.component';
 import { GetMovieGenreComponent } from './get-movie-genre/get-movie-genre.component';
 
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HttpClientModule } from "@angular/common/http";
   imports: [
     CommonModule,
     MoviesRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class MoviesModule { }

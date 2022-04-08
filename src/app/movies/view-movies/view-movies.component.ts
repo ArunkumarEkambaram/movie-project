@@ -19,4 +19,12 @@ export class ViewMoviesComponent implements OnInit {
     })
   }
 
+  deleteMovie(id: number) {
+    if (confirm("Do you want to delete this movie?")) {
+      this.movieService.deleteMovie(id).subscribe(data => {
+        alert("Movie Deleted Successfully");
+      })
+    }
+  }
+
 }

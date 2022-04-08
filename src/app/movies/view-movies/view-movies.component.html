@@ -1,8 +1,6 @@
 <div class="row">
   <div class="col-md-9">
-
     <h2>Movie Details</h2>
-    {{movies$ | json}}
     <hr>
     <table class="table table-hover">
       <thead>
@@ -18,7 +16,14 @@
           <td>{{m.movieName}}</td>
           <td>{{m.rating}}</td>
           <td>{{m.releaseDate | date:"mediumDate"}}</td>
-          <td> <a [routerLink]="['/movies/get-movie/',m.id]">Details</a> </td>
+          <td>
+
+          </td>
+          <td>
+            <a [routerLink]="['/movies/get-movie/',m.id]"> <i class="fa-solid fa-circle-info"></i></a>|
+            <a [routerLink]="['/movies/update-movie/',m.id]"><i class="fa-regular fa-pen-to-square"></i></a> |
+            <a href="#" (click)="deleteMovie(m.id)"><i class="fa-regular fa-trash-can text-danger"></i></a>
+          </td>
         </tr>
       </tbody>
     </table>

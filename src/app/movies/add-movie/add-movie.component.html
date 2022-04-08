@@ -1,1 +1,57 @@
-<p>add-movie works!</p>
+<h2>Add New Movie</h2>
+<hr>
+<div class="row">
+  <div class="col-md-5">
+    <form autocomplete="off" #movieForm="ngForm" (ngSubmit)="onSubmit(movieForm)">
+      <!--Movie Name-->
+      <div class="mb-2">
+        <label>Movie Name</label>
+        <input type="text" name="movieName" class="form-control" [(ngModel)]="movieService.movieData.movieName"
+        placeholder="Enter Movie Name"
+          #movieName="ngModel" required [class.is-invalid]="movieName.invalid && movieName.touched">
+      </div>
+
+      <!--Genre Name-->
+      <div class="mb-2">
+        <label>Genre Name</label>
+        <input type="text" name="genreName" class="form-control" [(ngModel)]="movieService.movieData.genreName"
+          #genreName="ngModel" required [class.is-invalid]="genreName.invalid && genreName.touched">
+      </div>
+
+      <!--Synopsis-->
+      <div class="mb-2">
+        <label>Synopsis</label>
+        <input type="text" name="synopsis" class="form-control" [(ngModel)]="movieService.movieData.synopsis"
+          #synopsis="ngModel" required [class.is-invalid]="synopsis.invalid && synopsis.touched">
+      </div>
+
+      <!--Runtime-->
+      <div class="mb-2">
+        <label>Runtime In Minutes</label>
+        <input type="text" name="runtimeInMinutes" class="form-control"
+          [(ngModel)]="movieService.movieData.runtimeInMinutes" #runtimeInMinutes="ngModel" required
+          [class.is-invalid]="runtimeInMinutes.invalid && runtimeInMinutes.touched">
+      </div>
+
+      <!--Rating-->
+      <div class="mb-2">
+        <label>Rating</label>
+        <input type="text" name="rating" class="form-control" [(ngModel)]="movieService.movieData.rating"
+          #rating="ngModel" required [class.is-invalid]="rating.invalid && rating.touched">
+      </div>
+
+      <!--Release Date-->
+      <div class="mb-2">
+        <label>Release Date</label>
+        <input type="date" name="releaseDate" class="form-control" [(ngModel)]="movieService.movieData.releaseDate"
+          #releaseDate="ngModel" required [class.is-invalid]="releaseDate.invalid && releaseDate.touched">
+      </div>
+
+      <div class="mb-2">
+        <button type="submit" class="btn btn-dark">Submit</button>
+        <button type="reset" class="btn btn-danger mx-2">Reset</button>
+      </div>
+
+    </form>
+  </div>
+</div>

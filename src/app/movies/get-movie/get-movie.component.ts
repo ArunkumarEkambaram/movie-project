@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 
 @Component({
@@ -9,10 +10,16 @@ import { MovieService } from '../services/movie.service';
 export class GetMovieComponent implements OnInit {
 
   movie$: any;
-  constructor(private movieService: MovieService) { }
+  id: any;
+
+  constructor(private movieService: MovieService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.movieService.getMovie(1).subscribe({
+    this.activatedRoute.params.subscribe((data) => {
+      this.id = data?.['id'];
+    });
+
+    this.movieService.getMovie(this.id).subscribe({
       next: (data) => { this.movie$ = data; },
       error: (err) => { console.log("Unable to fetch movie, Please contact server administrator" + err); },
       complete: () => { console.log("Success"); },
