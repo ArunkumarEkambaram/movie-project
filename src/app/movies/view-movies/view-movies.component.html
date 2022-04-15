@@ -2,6 +2,14 @@
   <div class="col-md-9">
     <h2>Movie Details</h2>
     <hr>
+    <div class="row  mb-3">
+      <div class="col-8">
+        <input type="search" name="searchText" class="form-control" placeholder="Search movie by name" [(ngModel)]="searchText">
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-secondary g-1" (click)="onSearchMovieName(searchText)">Search</button>
+      </div>
+    </div>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -13,14 +21,13 @@
       </thead>
       <tbody>
         <tr *ngFor="let m of movies$">
-          <td>{{m.movieName}}</td>
+          <td> <a [routerLink]="['/movies/get-movie/',m.id]"> {{m.movieName}}</a></td>
           <td>{{m.rating}}</td>
           <td>{{m.releaseDate | date:"mediumDate"}}</td>
           <td>
 
           </td>
           <td>
-            <a [routerLink]="['/movies/get-movie/',m.id]"> <i class="fa-solid fa-circle-info"></i></a>|
             <a [routerLink]="['/movies/update-movie/',m.id]"><i class="fa-regular fa-pen-to-square"></i></a> |
             <a href="#" (click)="deleteMovie(m.id)"><i class="fa-regular fa-trash-can text-danger"></i></a>
           </td>

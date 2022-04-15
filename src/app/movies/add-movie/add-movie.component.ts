@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { MovieService } from '../services/movie.service';
 })
 export class AddMovieComponent implements OnInit {
 
-  constructor(public movieService: MovieService) { }
+  //Add Router in the constructor
+  constructor(public movieService: MovieService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +20,7 @@ export class AddMovieComponent implements OnInit {
   onSubmit(movieForm: NgForm) {
     this.movieService.createMovie().subscribe({
       next: (data) => { },
-      complete: () => { alert("Created"); },
+      complete: () => { this.router.navigate(['/movies/']) }, //On successfull Complete, redirect to another page
       error: (err) => { console.log("Unable to create movie" + err); }
     })
   }

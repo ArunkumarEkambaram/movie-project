@@ -2,7 +2,7 @@
 <hr>
 <div class="row">
   <div class="col-md-5">
-    <form autocomplete="off" #movieForm="ngForm" (ngSubmit)="onSubmit(movieForm)">
+    <form novalidate autocomplete="off" #movieForm="ngForm" (ngSubmit)="onSubmit(movieForm)">
 
       <!--Movie Id-->
       <input type="hidden" name="id" [(ngModel)]="movieService.movieData.id">
@@ -11,8 +11,8 @@
       <div class="mb-2">
         <label>Movie Name</label>
         <input type="text" name="movieName" class="form-control" [(ngModel)]="movieService.movieData.movieName"
-        placeholder="Enter Movie Name"
-          #movieName="ngModel" required [class.is-invalid]="movieName.invalid && movieName.touched">
+          placeholder="Enter Movie Name" #movieName="ngModel" required
+          [class.is-invalid]="movieName.invalid && movieName.touched">
       </div>
 
       <!--Genre Name-->
@@ -48,7 +48,8 @@
       <div class="mb-2">
         <label>Release Date</label>
         <input type="date" name="releaseDate" class="form-control" [(ngModel)]="movieService.movieData.releaseDate"
-          #releaseDate="ngModel" required [class.is-invalid]="releaseDate.invalid && releaseDate.touched">
+          #releaseDate="ngModel" [ngModel]="movieService.movieData.releaseDate | date : 'yyyy-MM-dd'" required
+          [class.is-invalid]="releaseDate.invalid && releaseDate.touched">
       </div>
 
       <div class="mb-2">
@@ -57,5 +58,10 @@
       </div>
 
     </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-5">
+    <a [routerLink]="'/movies'">Back to List</a>
   </div>
 </div>

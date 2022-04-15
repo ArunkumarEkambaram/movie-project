@@ -35,4 +35,8 @@ export class MovieService {
     return this.http.delete(this.baseUrl+`DeleteMovie/${id}`);
   }
 
+  searchMovieByName(movieName:string){
+    return this.http.get(this.baseUrl+`ByMovieName/${movieName}`);
+  }
+
 }

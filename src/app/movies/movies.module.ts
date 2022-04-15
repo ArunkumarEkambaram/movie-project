@@ -12,6 +12,8 @@ import { GetMovieGenreComponent } from './get-movie-genre/get-movie-genre.compon
 
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from "ng2-search-filter";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 
 @NgModule({
@@ -22,13 +24,15 @@ import { FormsModule } from '@angular/forms';
     GetMovieComponent,
     ViewMoviesComponent,
     DeleteMovieComponent,
-    GetMovieGenreComponent,
+    GetMovieGenreComponent
   ],
   imports: [
     CommonModule,
     MoviesRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule,
+    MatDatepickerModule
   ]
 })
 export class MoviesModule { }
